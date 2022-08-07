@@ -27,7 +27,7 @@ void sp(const char s[2], char **okl, char *okk) {
 int ex(int w, int f, int la, char *z) {
     n++;
     memset(a, 0, 512);
-    if (z != NULL)
+    if (z !=NULL)
         sp(" ", a, ap[n]);
     else
         sp(" ", a, l);
@@ -61,9 +61,12 @@ int ex(int w, int f, int la, char *z) {
 
 int main(void) {
     signal(SIGINT, sighand);
+    int okokok = -1;
     while (1) {
         if (!fgets(l, 1024, stdin))
             return 0;
+        char j[1024];
+        strncpy(j, l, 1024);
         n = -1;
         int w = 0, f = 1;
         char *cm = l;
@@ -77,6 +80,7 @@ int main(void) {
             z = strchr(cm, '|');
             f = 0;
         }
-        w = ex(w, f, 1, cm);
+        if(strchr(j, '|') == NULL) w = ex(w, f, 1, z);
+        else w = ex(w, f, 1, cm);
     }
 }
