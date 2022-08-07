@@ -59,7 +59,34 @@ int ex(int w, int f, int la, char *z) {
     return g[0];
 }
 
-int main(void) {
+int main(int argc, char *argv[]) {
+    if(argv[1] !=NULL){
+      FILE* ptr;
+      for (int q = 1; argv[q] != NULL; q++){
+        ptr=fopen(argv[q], "r");
+        while(fgets(l, 60, ptr)){
+          char j[1024];
+          strncpy(j, l, 1024);
+          n = -1;
+          int w = 0, f = 1;
+          char *cm = l;
+          l[strlen(l) - 1] = 0;
+          char *z = strchr(cm, '|');
+          while (z != NULL) {
+            sp("|", ap, cm);
+            *z = '\0';
+            w = ex(w, f, 0, z);
+            cm = z + 1;
+            z = strchr(cm, '|');
+            f = 0;
+          }
+          if(strchr(j, '|') == NULL) w = ex(w, f, 1, z);
+          else w = ex(w, f, 1, cm);
+          memset(l, 0 , 1024);
+        }      
+      } 
+      exit(0);
+    }
     signal(SIGINT, sighand);
     int okokok = -1;
     while (1) {
