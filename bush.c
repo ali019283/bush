@@ -88,7 +88,6 @@ int main(int argc, char *argv[]) {
       exit(0);
     }
     signal(SIGINT, sighand);
-    int okokok = -1;
     while (1) {
         if (!fgets(l, 1024, stdin))
             return 0;
